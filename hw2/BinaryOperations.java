@@ -36,4 +36,8 @@ public enum BinaryOperations implements Operation {
     public int getNumberOfOperands() {
         return numberOfOperands;
     }
+
+    @Override public String toString() {
+        return this.symbol;
+    }
 }

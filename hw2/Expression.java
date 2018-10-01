@@ -23,4 +23,16 @@ public class Expression implements Evaluable {
             throw uve;
         }
     }
+
+    @Override public String toString() {
+        if (this.operands.length == 1) {
+            if (((UnaryOperations)this.operation).writeSymbolFirst()) {
+                return this.operation + "(" + operands[0] + ")";
+            } else {
+                return  "(" + operands[0] + ")" + this.operation;
+            }
+        } else {
+            return "(" + this.operands[0] + ")" + this.operation + "(" + this.operands[1] + ")";
+        }
+    }
 }

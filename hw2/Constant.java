@@ -20,4 +20,7 @@ public class Constant implements Evaluable {
         return this.getValue();
     }
 
+    @Override public String toString() {
+        return String.valueOf(this.value);
+    }
 }

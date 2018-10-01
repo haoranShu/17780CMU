@@ -35,4 +35,8 @@ public class Variable implements Evaluable {
             throw uve;
         }
     }
+
+    @Override public String toString() {
+        return this.name;
+    }
 }

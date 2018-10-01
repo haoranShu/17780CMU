@@ -12,9 +12,12 @@ public class Usecase {
         y.setValue(1.2);
         double z = e3.eval();
         System.out.println(z);
+        System.out.println(e3);
         double w = e4.eval();
         System.out.println(w);
+        System.out.println(e4);
         double h = e5.eval();
         System.out.println(h);
+        System.out.println(e5);
     }
 }
