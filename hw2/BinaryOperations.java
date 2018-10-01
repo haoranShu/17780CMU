@@ -11,6 +11,18 @@ public enum BinaryOperations implements Operation {
             assert operands.length == numberOfOperands;
             return operands[0].eval() - operands[1].eval();
         }
+    },
+    MULTIPLY("*") {
+        public double apply(Evaluable ... operands) {
+            assert operands.length == numberOfOperands;
+            return operands[0].eval() * operands[1].eval();
+        }
+    },
+    DIVIDE("/") {
+        public double apply(Evaluable ... operands) {
+            assert operands.length == numberOfOperands;
+            return operands[0].eval() / operands[1].eval();
+        }
     };
 
     private static final int numberOfOperands = 2;

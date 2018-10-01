@@ -3,11 +3,18 @@ public class Usecase {
         Constant c = new Constant("c", 1.0);
         Variable x = new Variable("x");
         Variable y = new Variable("y");
-        Expression e = Operations.ADD(x, y);
-        Expression e2 = new Expression(BinaryOperations.MINUS, e, c);
+        Expression e1 = Operations.ADD(x, y);
+        Expression e2 = Operations.MINUS(e1, c);
+        Expression e3 = Operations.MULTIPLY(e2, y);
+        Expression e4 = Operations.NEGATE(e3);
+        Expression e5 = Operations.SQRT(e2);
         x.setValue(1.2);
         y.setValue(1.2);
-        double z = e.eval();
+        double z = e3.eval();
         System.out.println(z);
+        double w = e4.eval();
+        System.out.println(w);
+        double h = e5.eval();
+        System.out.println(h);
     }
 }
