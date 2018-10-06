@@ -20,6 +20,10 @@ public class Constant implements Evaluable {
         return this.getValue();
     }
 
+    public void accept(NodeVisitor visitor) {
+        visitor.visitConstant(this);
+    }
+
     @Override public String toString() {
         return String.valueOf(this.value);
     }

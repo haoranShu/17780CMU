@@ -19,5 +19,9 @@ public class Usecase {
         double h = e5.eval();
         System.out.println(h);
         System.out.println(e5);
+
+        SetOfVariableVisitor svv = new SetOfVariableVisitor();
+        e1.accept(svv);
+        System.out.println(svv.getVariables());
     }
 }

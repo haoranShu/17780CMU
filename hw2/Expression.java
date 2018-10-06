@@ -24,6 +24,13 @@ public class Expression implements Evaluable {
         }
     }
 
+    public void accept(NodeVisitor visitor) {
+        for (Evaluable operand : this.operands) {
+            operand.accept(visitor);
+        }
+        visitor.visitExpression(this);
+    }
+
     @Override public String toString() {
         if (this.operands.length == 1) {
             if (((UnaryOperations)this.operation).writeSymbolFirst()) {

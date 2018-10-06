@@ -36,6 +36,10 @@ public class Variable implements Evaluable {
         }
     }
 
+    public void accept(NodeVisitor visitor) {
+        visitor.visitVariable(this);
+    }
+
     @Override public String toString() {
         return this.name;
     }

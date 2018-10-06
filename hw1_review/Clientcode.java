@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Clientcode {
         public static void main(String[] args) {
@@ -10,9 +8,14 @@ public class Clientcode {
         System.out.println("Printing all permutations using a Collection style");
 
         int count = 0;
-        for (List<Integer> perm : Permutations.of(mylist)) {
+        //for (List<Integer> perm : Permutations.of(mylist)) {
+        //    count += 1;
+        //    System.out.println(perm);
+        //}
+        List<List<Integer>> perms = (List<List<Integer>>)Permutations.of(mylist);
+        for (int i = 0; i < perms.size() - 4; i++) {
             count += 1;
-            System.out.println(perm);
+            System.out.println(perms.get(i));
         }
         System.out.println(count);
     }
