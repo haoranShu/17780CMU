@@ -16,14 +16,6 @@ public class Expression implements Evaluable {
         this.operands = operands;
     }
 
-    public double eval() throws UninitializedVariableException {
-        try {
-            return this.operation.apply(this.operands);
-        } catch (UninitializedVariableException uve) {
-            throw uve;
-        }
-    }
-
     public void accept(NodeVisitor visitor) {
         for (Evaluable operand : this.operands) {
             operand.accept(visitor);
@@ -41,5 +33,13 @@ public class Expression implements Evaluable {
         } else {
             return "(" + this.operands[0] + ")" + this.operation + "(" + this.operands[1] + ")";
         }
+    }
+
+    public Operation getOperation() {
+        return this.operation;
+    }
+
+    public Evaluable[] getOperands() {
+        return this.operands;
     }
 }

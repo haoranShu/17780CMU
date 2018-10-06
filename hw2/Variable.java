@@ -28,14 +28,6 @@ public class Variable implements Evaluable {
         this.initialized = true;
     }
 
-    public double eval() throws UninitializedVariableException {
-        try {
-            return this.getValue();
-        } catch (UninitializedVariableException uve) {
-            throw uve;
-        }
-    }
-
     public void accept(NodeVisitor visitor) {
         visitor.visitVariable(this);
     }

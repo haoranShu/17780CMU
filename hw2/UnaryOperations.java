@@ -3,21 +3,21 @@ import java.lang.Math;
 public enum UnaryOperations implements Operation {
 
     NEGATE("-", true) {
-        public double apply(Evaluable ... operands) {
+        public double apply(double ... operands) {
             assert operands.length == numberOfOperands;
-            return -operands[0].eval();
+            return -operands[0];
         }
     },
     SQUARED("^2", false) {
-        public double apply(Evaluable ... operands) {
+        public double apply(double ... operands) {
             assert operands.length == numberOfOperands;
-            return operands[0].eval() * operands[0].eval();
+            return operands[0] * operands[0];
         }
     },
     SQRT("_/", true) {
-        public double apply(Evaluable ... operands) {
+        public double apply(double ... operands) {
             assert operands.length == numberOfOperands;
-            return Math.sqrt(operands[0].eval());
+            return Math.sqrt(operands[0]);
         }
     };
 

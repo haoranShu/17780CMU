@@ -10,13 +10,19 @@ public class Usecase {
         Expression e5 = Operations.SQRT(e2);
         x.setValue(1.2);
         y.setValue(1.2);
-        double z = e3.eval();
+        EvalVisitor evz = new EvalVisitor();
+        e3.accept(evz);
+        double z = evz.getResult(e3);
         System.out.println(z);
         System.out.println(e3);
-        double w = e4.eval();
+        EvalVisitor evw = new EvalVisitor();
+        e4.accept(evw);
+        double w = evw.getResult(e4);
         System.out.println(w);
         System.out.println(e4);
-        double h = e5.eval();
+        EvalVisitor evh = new EvalVisitor();
+        e5.accept(evh);
+        double h = evh.getResult(e5);
         System.out.println(h);
         System.out.println(e5);
 

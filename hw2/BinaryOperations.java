@@ -1,27 +1,27 @@
 public enum BinaryOperations implements Operation {
 
     ADD("+") {
-        public double apply(Evaluable ... operands) {
+        public double apply(double ... operands) {
             assert operands.length == numberOfOperands;
-            return operands[0].eval() + operands[1].eval();
+            return operands[0] + operands[1];
         }
     },
     MINUS("-") {
-        public double apply(Evaluable ... operands) {
+        public double apply(double ... operands) {
             assert operands.length == numberOfOperands;
-            return operands[0].eval() - operands[1].eval();
+            return operands[0] - operands[1];
         }
     },
     MULTIPLY("*") {
-        public double apply(Evaluable ... operands) {
+        public double apply(double ... operands) {
             assert operands.length == numberOfOperands;
-            return operands[0].eval() * operands[1].eval();
+            return operands[0] * operands[1];
         }
     },
     DIVIDE("/") {
-        public double apply(Evaluable ... operands) {
+        public double apply(double ... operands) {
             assert operands.length == numberOfOperands;
-            return operands[0].eval() / operands[1].eval();
+            return operands[0] / operands[1];
         }
     };
 
