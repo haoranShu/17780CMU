@@ -3,33 +3,35 @@ import java.util.HashMap;
 public class EvalVisitor implements NodeVisitor {
 
     public EvalVisitor() {
-        this.result = new HashMap<>();
+        this._result = new HashMap<>();
     }
     
-    public void visitConstant(Constant c) {
-        this.result.put(c, c.getValue());
+    public void visitConstantNode(ConstantNode c) {
+        this._result.put(c, c.getValue());
     }
 
-    public void visitVariable(Variable v) {
+    public void visitVariableNode(VariableNode v) throws UninitializedVariableException{
         try {
-            this.result.put(v, v.getValue());
+            this._result.put(v, v.getValue());
         } catch (UninitializedVariableException uve) {
-            System.out.println(uve.getMessage());
+            throw uve;
         }
     }
 
-    public void visitExpression(Expression e) {
-        double[] operandValues = new double[e.getOperation().getNumberOfOperands()];
-        Evaluable[] operands = e.getOperands();
-        for (int i = 0; i < operands.length; ++i) {
-            operandValues[i] = this.result.get(operands[i]);
-        }
-        this.result.put(e, e.getOperation().apply(operandValues));
+    public void visitUnaryNode(UnaryNode un) {
+        double operand = this._result.get(un.getOperand());
+        this._result.put(un, un.getOperation().apply(operand));
     }
 
-    public double getResult(Evaluable e) {
-        return this.result.get(e);
+    public void visitBinaryNode(BinaryNode bn) {
+        double operandL = this._result.get(bn.getOperandL());
+        double operandR = this._result.get(bn.getOperandR());
+        this._result.put(bn, bn.getOperation().apply(operandL, operandR));
     }
 
-    private HashMap<Evaluable, Double> result;
+    public double getResult(ExpressionNode e) {
+        return this._result.get(e);
+    }
+
+    private HashMap<ExpressionNode, Double> _result;
 }

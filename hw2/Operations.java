@@ -1,31 +1,31 @@
 public class Operations {
 
-    public static Expression ADD(Evaluable e1, Evaluable e2) {
-        return new Expression(BinaryOperations.ADD, e1, e2);
+    public static BinaryNode ADD(ExpressionNode e1, ExpressionNode e2) {
+        return new BinaryNode(BasicBinaryOperation.ADD, e1, e2);
     }
 
 
-    public static Expression MINUS(Evaluable e1, Evaluable e2) {
-        return new Expression(BinaryOperations.MINUS, e1, e2);
+    public static BinaryNode MINUS(ExpressionNode e1, ExpressionNode e2) {
+        return new BinaryNode(BasicBinaryOperation.MINUS, e1, e2);
     }
 
-    public static Expression MULTIPLY(Evaluable e1, Evaluable e2) {
-        return new Expression(BinaryOperations.MULTIPLY, e1, e2);
+    public static BinaryNode MULTIPLY(ExpressionNode e1, ExpressionNode e2) {
+        return new BinaryNode(BasicBinaryOperation.MULTIPLY, e1, e2);
     }
 
-    public static Expression DIVIDE(Evaluable e1, Evaluable e2) {
-        return new Expression(BinaryOperations.DIVIDE, e1, e2);
+    public static BinaryNode DIVIDE(ExpressionNode e1, ExpressionNode e2) {
+        return new BinaryNode(BasicBinaryOperation.DIVIDE, e1, e2);
     }
 
-    public static Expression NEGATE(Evaluable e) {
-        return new Expression(UnaryOperations.NEGATE, e);
+    public static UnaryNode NEGATE(ExpressionNode e) {
+        return new UnaryNode(BasicUnaryOperation.NEGATE, e);
     }
 
-    public static Expression SQAURED(Evaluable e) {
-        return new Expression(UnaryOperations.SQUARED, e);
+    public static UnaryNode SQAURED(ExpressionNode e) {
+        return new UnaryNode(BasicUnaryOperation.SQUARED, e);
     }
 
-    public static Expression SQRT(Evaluable e) {
-        return new Expression(UnaryOperations.SQRT, e);
+    public static UnaryNode SQRT(ExpressionNode e) {
+        return new UnaryNode(BasicUnaryOperation.SQRT, e);
     }
 }

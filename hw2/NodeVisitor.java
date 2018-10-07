@@ -1,8 +1,10 @@
 public interface NodeVisitor {
 
-    public void visitConstant(Constant c);
+    public void visitConstantNode(ConstantNode c);
 
-    public void visitVariable(Variable v);
+    public void visitVariableNode(VariableNode v);
 
-    public void visitExpression(Expression e);
+    public void visitUnaryNode(UnaryNode un);
+
+    public void visitBinaryNode(BinaryNode bn);
 }

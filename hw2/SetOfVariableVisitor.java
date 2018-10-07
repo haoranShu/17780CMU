@@ -1,21 +1,23 @@
 import java.util.HashSet;
 
 public class SetOfVariableVisitor implements NodeVisitor {
-    private HashSet<Variable> variables;
+    private HashSet<VariableNode> _variables;
 
     public SetOfVariableVisitor() {
-        this.variables = new HashSet<>();
+        this._variables = new HashSet<>();
     }
 
-    public void visitConstant(Constant c) { return; }
+    public void visitConstantNode(ConstantNode c) { return; }
 
-    public void visitVariable(Variable v) {
-        this.variables.add(v);
+    public void visitVariableNode(VariableNode v) {
+        this._variables.add(v);
     }
 
-    public void visitExpression(Expression e) { return; }
+    public void visitUnaryNode(UnaryNode un) { return; }
 
-    public HashSet<Variable> getVariables() {
-        return this.variables;
+    public void visitBinaryNode(BinaryNode bn) { return; }
+
+    public HashSet<VariableNode> getVariables() {
+        return this._variables;
     }
 }
