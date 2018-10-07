@@ -14,18 +14,15 @@ public class Usecase {
         x.setValue(1.2);
         y.setValue(1.2);
         EvalVisitor evz = new EvalVisitor();
-        e3.accept(evz);
-        double z = evz.getResult(e3);
+        double z = e3.accept(evz).getResult();
         System.out.println(z);
         System.out.println(e3);
         EvalVisitor evw = new EvalVisitor();
-        e4.accept(evw);
-        double w = evw.getResult(e4);
+        double w = e4.accept(evw).getResult();
         System.out.println(w);
         System.out.println(e4);
         EvalVisitor evh = new EvalVisitor();
-        e5.accept(evh);
-        double h = evh.getResult(e5);
+        double h = e5.accept(evh).getResult();
         System.out.println(h);
         System.out.println(e5);
 
