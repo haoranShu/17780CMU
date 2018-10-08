@@ -27,6 +27,10 @@ public class Usecase {
         e1.accept(svv);
         System.out.println(svv.getVariables());
 
+        LispVisitor lispv = new LispVisitor();
+        e5.accept(lispv);
+        System.out.println(lispv.getResult());
+
         testenv.printOverview();
     }
 }
