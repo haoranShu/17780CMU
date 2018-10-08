@@ -18,7 +18,7 @@ public class VariableNode implements ExpressionNode {
         this._value = value;
     } 
 
-    public double getValue() throws UninitializedVariableException {
+    public double getValue() {
         if (this._initialized) {
             return this._value;
         } else {

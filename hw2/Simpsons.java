@@ -1,8 +1,7 @@
 import java.lang.IllegalArgumentException;
 
 public class Simpsons {
-    public static double integrate(ExpressionNode en, VariableNode var, double start, double end, int N)
-            throws IllegalArgumentException {
+    public static double integrate(ExpressionNode en, VariableNode var, double start, double end, int N) {
         if (N%2 == 1) {
             throw new IllegalArgumentException("N must be even.");
         }
@@ -12,7 +11,7 @@ public class Simpsons {
         for (int i = 0; i <= N; ++i) {
             var.setValue(start + i * delta);
             en.accept(evaluator);
-            double evali = evaluator.getResult(en);
+            double evali = evaluator.getResult();
             if (i == 0 || i == N) {
                 accumulator += evali;
             } else if (i%2 == 1) {

@@ -21,7 +21,7 @@ public class ArithmeticEnv {
         return new ArithmeticEnv();
     }
 
-    public VariableNode createVariable(String name) throws IllegalArgumentException {
+    public VariableNode createVariable(String name) {
         if (this._variables.containsKey(name)) {
             throw new IllegalArgumentException("Variable name " + name + " has already existed in this environment.");
         } else {
@@ -59,13 +59,34 @@ public class ArithmeticEnv {
         return cn.equals(this._constants.get(cn.getName()));
     }
 
-    public boolean containsNode(BinaryNode bn) {
+    public boolean containsBinary(BinaryNode bn) {
         return this.equals(bn.getEnv());
     }
 
-    public boolean containsNode(UnaryNode un) {
+    public boolean containsUnary(UnaryNode un) {
         return this.equals(un.getEnv());
     }
+
+    public boolean contains(ExpressionNode e) {
+        if (e instanceof ConstantNode) {
+            return this.containsConstant((ConstantNode)e);
+        } else if (e instanceof VariableNode) {
+            return this.containsVariable((VariableNode)e);
+        } else if (e instanceof UnaryNode) {
+            return this.containsUnary((UnaryNode)e);
+        } else {
+            return this.containsBinary((BinaryNode)e);
+        }
+    }
+
+    public double evaluate(ExpressionNode e) {
+        assert this.contains(e) : "Cannot evaluate ExpressionNode of another environment.";
+        EvalVisitor visitor = new EvalVisitor();
+        e.accept(visitor);
+        double result = visitor.getResult();
+        return result;
+    }
+
 
     public Optional<VariableNode> getVariable(String name) {
         return Optional.ofNullable(this._variables.get(name));

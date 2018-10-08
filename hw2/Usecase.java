@@ -13,16 +13,13 @@ public class Usecase {
         ExpressionNode e5 = testenv.SQRT(e2);
         x.setValue(1.2);
         y.setValue(1.2);
-        EvalVisitor evz = new EvalVisitor();
-        double z = e3.accept(evz).getResult();
+        double z = testenv.evaluate(e3);
         System.out.println(z);
         System.out.println(e3);
-        EvalVisitor evw = new EvalVisitor();
-        double w = e4.accept(evw).getResult();
+        double w = testenv.evaluate(e4);
         System.out.println(w);
         System.out.println(e4);
-        EvalVisitor evh = new EvalVisitor();
-        double h = e5.accept(evh).getResult();
+        double h = testenv.evaluate(e5);
         System.out.println(h);
         System.out.println(e5);
 

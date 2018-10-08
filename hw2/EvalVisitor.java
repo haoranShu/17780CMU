@@ -14,13 +14,9 @@ public class EvalVisitor implements NodeVisitor {
         this._mostRecentVisited = c;
     }
 
-    public void visitVariableNode(VariableNode v) throws UninitializedVariableException{
-        try {
-            this._result.put(v, v.getValue());
-            this._mostRecentVisited = v;
-        } catch (UninitializedVariableException uve) {
-            throw uve;
-        }
+    public void visitVariableNode(VariableNode v) {
+        this._result.put(v, v.getValue());
+        this._mostRecentVisited = v;
     }
 
     public void visitUnaryNode(UnaryNode un) {
@@ -36,7 +32,7 @@ public class EvalVisitor implements NodeVisitor {
         this._mostRecentVisited = bn;
     }
 
-    public double getResult() throws IllegalStateException {
+    public double getResult() {
         if (this._mostRecentVisited != null) {
             return this._result.get(this._mostRecentVisited);
         } else {
