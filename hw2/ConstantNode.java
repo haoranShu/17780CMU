@@ -1,8 +1,10 @@
 public class ConstantNode implements ExpressionNode {
 
-    private final ArithmeticEnv _env;
-    private final double _value;
-    private final String _name;
+    private ArithmeticEnv _env = null;
+    private double _value = 0;
+    private String _name = null;
+
+    private ConstantNode() {};
 
     public ConstantNode(ArithmeticEnv env, String name, double value) {
         this._env = env;

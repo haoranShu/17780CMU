@@ -1,10 +1,12 @@
 public class BinaryNode implements ExpressionNode {
 
-    private final ArithmeticEnv _env;
-    private final BinaryOperation _operation;
-    private final ExpressionNode _operandL;
-    private final ExpressionNode _operandR;
+    private ArithmeticEnv _env = null;
+    private BinaryOperation _operation = null;
+    private ExpressionNode _operandL = null;
+    private ExpressionNode _operandR = null;
     
+    private BinaryNode() {}
+
     public BinaryNode(BinaryOperation operation, ExpressionNode operandL, ExpressionNode operandR) {
         assert operandL.getEnv().equals(operandR.getEnv()) : "Both operands must belong to the same Arithmetic Environment.";
         this._env = operandL.getEnv();

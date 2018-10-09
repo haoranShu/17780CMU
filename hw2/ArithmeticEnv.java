@@ -4,12 +4,18 @@ import java.util.Optional;
 import java.lang.IllegalArgumentException;
 
 public class ArithmeticEnv {
+    /*
+     * This class implements an arithmetic environment for the library.
+     * Any ExpressionNode must be associate with one and only one arithmetic environment.
+     */
 
+    // tables for associated ExpressionNodes
     private HashMap<String, ConstantNode> _constants;
     private HashMap<String, VariableNode> _variables;
     private HashSet<UnaryNode> _unarynodes;
     private HashSet<BinaryNode> _binarynodes;
 
+    // 
     private ArithmeticEnv() {
         this._constants = new HashMap<>();
         this._variables = new HashMap<>();

@@ -2,9 +2,11 @@ import java.lang.IllegalArgumentException;
 
 public class UnaryNode implements ExpressionNode {
 
-    private final ArithmeticEnv _env;
-    private final UnaryOperation _operation;
-    private final ExpressionNode _operand;
+    private ArithmeticEnv _env = null;
+    private UnaryOperation _operation = null;
+    private ExpressionNode _operand = null;
+
+    private UnaryNode() {};
     
     public UnaryNode(UnaryOperation operation, ExpressionNode operand) {
         this._env = operand.getEnv();

@@ -1,9 +1,11 @@
 public class VariableNode implements ExpressionNode {
 
-    private final ArithmeticEnv _env;
-    private double _value;
-    private boolean _initialized;
-    private final String _name;
+    private ArithmeticEnv _env = null;
+    private double _value = 0;
+    private boolean _initialized = false;
+    private String _name = null;
+
+    private VariableNode() {};
 
     public VariableNode(ArithmeticEnv env, String name) {
         this._env = env;
