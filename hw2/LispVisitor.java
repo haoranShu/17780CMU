@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.lang.IllegalStateException;
-import java.util.Optional;
 
 public class LispVisitor implements NodeVisitor {
 
@@ -40,10 +39,6 @@ public class LispVisitor implements NodeVisitor {
         } else {
             throw new IllegalStateException("No result available.");
         }
-    }
-
-    public Optional<String> getResult(ExpressionNode e) {
-        return Optional.ofNullable(this._result.get(e));
     }
 
     private HashMap<ExpressionNode, String> _result;

@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.lang.IllegalStateException;
-import java.util.Optional;
 
 public class EvalVisitor implements NodeVisitor {
 
@@ -38,10 +37,6 @@ public class EvalVisitor implements NodeVisitor {
         } else {
             throw new IllegalStateException("No result available.");
         }
-    }
-
-    public Optional<Double> getResult(ExpressionNode e) {
-        return Optional.ofNullable(this._result.get(e));
     }
 
     private HashMap<ExpressionNode, Double> _result;
