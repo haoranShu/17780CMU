@@ -1,6 +1,9 @@
 import java.lang.Math;
 
 public enum BasicUnaryOperation implements UnaryOperation {
+    /**
+     * This enum class defines basic unary operations
+     */
 
     NEGATE("-", true) {
         public double apply(double operand) {

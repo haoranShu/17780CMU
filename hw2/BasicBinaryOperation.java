@@ -1,4 +1,7 @@
 public enum BasicBinaryOperation implements BinaryOperation {
+    /**
+     * This enum class defines basic binary operations
+     */
 
     ADD("+") {
         public double apply(double operandL, double operandR) {

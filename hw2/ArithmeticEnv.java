@@ -15,7 +15,7 @@ public class ArithmeticEnv {
     private HashSet<UnaryNode> _unarynodes;
     private HashSet<BinaryNode> _binarynodes;
 
-    // 
+    // constructor 
     private ArithmeticEnv() {
         this._constants = new HashMap<>();
         this._variables = new HashMap<>();
@@ -23,10 +23,13 @@ public class ArithmeticEnv {
         this._binarynodes = new HashSet<>();
     }
 
+    // static factory, no difference from a constructor at the moment
+    // but might be useful if in the future we want to add fancy things
     public static ArithmeticEnv getEnvironment() {
         return new ArithmeticEnv();
     }
 
+    // create uninitialized new variable
     public VariableNode createVariable(String name) {
         if (this._variables.containsKey(name)) {
             throw new IllegalArgumentException("Variable name " + name + " has already existed in this environment.");
@@ -37,6 +40,7 @@ public class ArithmeticEnv {
         }
     }
 
+    // create initialized new variable
     public VariableNode createVariable(String name, double value) {
         if (this._variables.containsKey(name)) {
             throw new IllegalArgumentException("Variable name " + name + " has already existed in this environment.");
@@ -47,6 +51,7 @@ public class ArithmeticEnv {
         }
     }
 
+    // create new constant
     public ConstantNode createConstant(String name, double value) {
         if (this._constants.containsKey(name)) {
             throw new IllegalArgumentException("Constant name " + name + " has already existed in this environment.");
@@ -57,22 +62,27 @@ public class ArithmeticEnv {
         }
     }
 
+    // test if a variable is contained in this environment
     public boolean containsVariable(VariableNode vn) {
         return vn.equals(this._variables.get(vn.getName()));
     }
 
+    // test if a constant is contained in this environment
     public boolean containsConstant(ConstantNode cn) {
         return cn.equals(this._constants.get(cn.getName()));
     }
 
+    // test if a binary node is contained in this environment
     public boolean containsBinary(BinaryNode bn) {
         return this.equals(bn.getEnv());
     }
 
+    // test if a unary node is contained in this environment
     public boolean containsUnary(UnaryNode un) {
         return this.equals(un.getEnv());
     }
 
+    // test if an ExpressionNode is contained in this environment
     public boolean contains(ExpressionNode e) {
         if (e instanceof ConstantNode) {
             return this.containsConstant((ConstantNode)e);
@@ -85,6 +95,10 @@ public class ArithmeticEnv {
         }
     }
 
+    // method for convenience: this should have been user code
+    // however, evaluate is too common a use case, it is better
+    // if we provide the visitor at the very beginning and also
+    // provide a convenient API for that.
     public double evaluate(ExpressionNode e) {
         assert this.contains(e) : "Cannot evaluate ExpressionNode of another environment.";
         EvalVisitor visitor = new EvalVisitor();
@@ -93,14 +107,17 @@ public class ArithmeticEnv {
         return result;
     }
 
-
+    // get variable by name
     public Optional<VariableNode> getVariable(String name) {
         return Optional.ofNullable(this._variables.get(name));
     }
 
+    // get constant by name
     public Optional<ConstantNode> getConstant(String name) {
         return Optional.ofNullable(this._constants.get(name));
     }
+
+    /* The following are operation wrappers serve as static factories for computation nodes */
 
     public BinaryNode ADD(ExpressionNode e1, ExpressionNode e2) {
         BinaryNode bn = new BinaryNode(BasicBinaryOperation.ADD, e1, e2);
@@ -144,6 +161,8 @@ public class ArithmeticEnv {
         return un;
     }
 
+    // a convenient printing method, does not override toString() because there is no
+    // universally accepted idea of what an arithmetic environment should be printed as
     public void printOverview() {
         String s = "------------------------\n";
         s += "Environment Overview:\n";

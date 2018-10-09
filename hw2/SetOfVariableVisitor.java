@@ -1,6 +1,11 @@
 import java.util.HashSet;
 
 public class SetOfVariableVisitor implements NodeVisitor {
+    /**
+     * This class implements a variable counter
+     * The implementation is straight forward
+     */
+
     private HashSet<VariableNode> _variables;
 
     public SetOfVariableVisitor() {

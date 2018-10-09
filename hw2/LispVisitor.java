@@ -2,6 +2,10 @@ import java.util.HashMap;
 import java.lang.IllegalStateException;
 
 public class LispVisitor implements NodeVisitor {
+    /**
+     * This class implements a lisp compiler
+     * The implementation is straight forward
+     */
 
     public LispVisitor() {
         this._result = new HashMap<>();
