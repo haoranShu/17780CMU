@@ -1,0 +1,16 @@
+Compile with the command
+
+javac *.java
+
+you will be able to run two client codes:
+
+java BasicUsecase
+
+and
+
+java Simpsons
+
+The first one is just basic expression construction,
+evaluation and lisp compilation. The second one is an
+implementation of Simpson's integration using the
+expression library.

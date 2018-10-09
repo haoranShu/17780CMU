@@ -1,4 +1,4 @@
-public class Usecase {
+public class BasicUsecase {
     public static void main(String[] args) {
         ArithmeticEnv testenv = ArithmeticEnv.getEnvironment();
 
